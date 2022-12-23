@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+    rabbit:
+        # management - образ с web-интерфейсом, типа phpMyAdmin для RabbitMQ
+        image: rabbitmq:3-management
+        container_name: rabbit
+        networks:
+            - test_network
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=admin
+            - RABBITMQ_DEFAULT_PASS=admin
+
+
+networks:
+    test_network:
+        external: False
